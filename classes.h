@@ -2,13 +2,17 @@
 #include <vector>
 
 #ifdef __GCCXML__
-template class std::vector<MyTrack>;
-#endif
+//template class std::vector<MyTrack>;
 
-/*
-struct dictionary
+
+namespace
 {
+
+struct GCCXML_DUMMY_INSTANTIATION {
     std::vector<MyTrack> vtrack;
 };
-*/
+
+}
+
+#endif
 
