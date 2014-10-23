@@ -1,6 +1,5 @@
-#include <vector>
-#include "MyTrack.h"
+#ifdef __CINT__
 
 #pragma link C++ class std::vector<MyTrack>+;
 
-template class std::vector<MyTrack>;
+#endif
