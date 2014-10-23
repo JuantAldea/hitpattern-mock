@@ -4,5 +4,6 @@
     </class>
     <class name="MyTrack" ClassVersion="1">
         <version ClassVersion="1" checksum="2022291691"/>
-   </class>
+    </class>
+    <class name="std::vector<MyTrack>"/> 
 </lcgdict>
