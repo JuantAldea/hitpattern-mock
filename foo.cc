@@ -16,17 +16,11 @@ int foo()
 
     TFile *m_rootFile = new TFile(m_rootFileName.c_str(), "RECREATE");
     TTree *m_rootTree = new TTree("tree", "tree");
-//    gROOT->ProcessLine("#include <vector>");
 #define vector
 #ifdef vector
     using namespace std;
-    vector <MyTrack> tracks;
-    for (int j = 0; j < 10; j++) {
-        tracks.push_back(MyTrack());
-        for (int i = 0; i < 25; i++) {
-            tracks.back().setHitPattern(i, i);
-        }
-    }
+    vector<MyTrack> tracks(10);
+
     m_rootTree->Branch("collection", &tracks);
 
 #else

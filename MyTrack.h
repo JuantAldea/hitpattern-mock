@@ -4,6 +4,11 @@
 class MyTrack
 {
 public:
+    MyTrack(){
+        for (int i = 0; i < 25; i++){
+            p.setHit(i, i);
+        }
+    }
     uint32_t getHitPattern(size_t index)
     {
         return p.getHit(index);
