@@ -1,25 +1,27 @@
 #pragma once
 #include "MyHitPattern.h"
-
 class MyTrack
 {
+
 public:
-    MyTrack(){
-        for (int i = 0; i < 25; i++){
-            p.setHit(i, i);
+
+    MyTrack()
+    {
+        for (int i = 0; i < 20; i++) {
+            hitPattern.setHit(i);
         }
     }
-    uint32_t getHitPattern(size_t index)
+    uint16_t getHitPattern(size_t index)
     {
-        return p.getHit(index);
+        return hitPattern.getHit(index);
     }
 
-    void setHitPattern(uint16_t hit, size_t index)
+    void setHitPattern(uint16_t hit)
     {
-        p.setHit(hit, index);
+        hitPattern.setHit(hit);
     }
 
 private:
-    MyHitPattern p;
+    MyHitPattern hitPattern;
 };
 

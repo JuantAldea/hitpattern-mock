@@ -6,22 +6,34 @@
 class MyHitPattern
 {
 public:
+    static const size_t MAX_HITS = 50;
+
     MyHitPattern()
     {
-        memset(hitPattern, sizeof(hitPattern), 0);
+        memset(hitPattern, sizeof(uint16_t) * MAX_HITS, 0);
+        count = 0;
     };
 
-    void setHit(uint32_t data, size_t index)
+    void setHit(uint16_t data)
     {
-        // well known buffer offerflow
-        hitPattern[index] = data;
+        if (count == MyHitPattern::MAX_HITS) {
+            return;
+        }
+        hitPattern[count] = data;
+        count++;
     }
 
-    uint32_t getHit(size_t index)
+    uint16_t getHit(size_t index)
     {
+        if (index >= MyHitPattern::MAX_HITS) {
+            return 0;
+        }
+
         return hitPattern[index];
     }
 
+
 private:
-    uint32_t hitPattern[25];
+    uint16_t hitPattern[MAX_HITS];
+    uint8_t count;
 };
