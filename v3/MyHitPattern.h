@@ -6,7 +6,7 @@
 class MyHitPattern
 {
 public:
-    static const size_t MAX_HITS = 50;
+    static const size_t MAX_HITS = 25;
 
     MyHitPattern()
     {

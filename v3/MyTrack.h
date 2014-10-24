@@ -2,15 +2,8 @@
 #include "MyHitPattern.h"
 class MyTrack
 {
-
 public:
 
-    MyTrack()
-    {
-        for (int i = 0; i < 20; i++) {
-            hitPattern.setHit(i);
-        }
-    }
     uint16_t getHitPattern(size_t index)
     {
         return hitPattern.getHit(index);

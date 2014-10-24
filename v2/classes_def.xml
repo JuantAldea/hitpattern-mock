@@ -1,0 +1,9 @@
+<lcgdict>
+    <class name="MyHitPattern" ClassVersion="2">
+     <version ClassVersion="2" checksum="2539181362"/>
+    </class>
+    <class name="MyTrack" ClassVersion="2">
+     <version ClassVersion="2" checksum="1440275628"/>
+    </class>
+    <class name="std::vector<MyTrack>"/> 
+</lcgdict>

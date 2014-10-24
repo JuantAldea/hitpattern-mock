@@ -18,11 +18,16 @@ int foo()
     TTree *m_rootTree = new TTree("tree", "tree");
 
     std::vector<MyTrack> tracks;
-    for (int i=0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
         tracks.push_back(MyTrack());
-        std::cout << "Inserted track " << i << std::endl;
+         for (int j = 0; j < 5; j++) {
+            tracks.back().setHitPattern(j, j);
+        }
+       std::cout << "Inserted track " << i << std::endl;
     }
-    m_rootTree->Branch("collection", &tracks, 32000, 1);
+    m_rootTree->Branch("collection_split2", &tracks, 32000, 2);
+    m_rootTree->Branch("collection_split1", &tracks, 32000, 1);
+    m_rootTree->Branch("collection_split0", &tracks, 32000, 0);
 
     m_rootTree->Fill();
     m_rootFile->Write();
