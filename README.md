@@ -9,14 +9,16 @@ There are 3 potential problems you can spot with this example:
 ### Schema evolution not happening
 
 The schema evolution consist of:
-    -   MyHitPattern(V2) has only one member and it is an array of uint.
-    -   Convert MyHitPattern(V2) into V3 -> copy hits and increase the hit counter properly.
-    -   Merge the two MyHitPattern that are members of MyTrack(V2) into a single MyHitPattern object which is member of MyTrack(V3).
+
+- MyHitPattern(V2) has only one member and it is an array of uint.
+- Convert MyHitPattern(V2) into V3 -> copy hits and increase the hit counter properly.
+- Merge the two MyHitPattern that are members of MyTrack(V2) into a single MyHitPattern object which is member of MyTrack(V3).
 
 After creating a file using v2/foo.cc and reading it with v3 you would see that:
-    -   The split_level_0 collection is correctly transformed: Only array and count will be present.
-    -   The split_level_1 collection is partially converted, there are still two MyHitPattern objects but the count data member is present.
-    -   The split_level_2 an default are not converted at all.
+
+- The split_level_0 collection is correctly transformed: Only array and count will be present.
+- The split_level_1 collection is partially converted, there are still two MyHitPattern objects but the count data member is present.
+- The split_level_2 an default are not converted at all.
 
 For some more information about the original schema evolution problem you can take a look at the pdf included.
 
