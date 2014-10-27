@@ -11,6 +11,9 @@
     <class name="std::vector<MyTrack>"/> 
     
     
+        <!-- 
+        To trigger the problem of the rules being aplied multiple times, for instance, you could click multiple times on the count member using a TBrowser.
+        -->
    <ioread
         sourceClass="MyHitPattern"
         source="uint16_t array[25]"
@@ -29,10 +32,7 @@
                 }
                 newObj->setHit(hit);
             }
-            
-            // from here you will see some prints with:
-            //  * Count == 5 as MyTrack(V2)::hitPattern1 stores 5 hits.
-            //  * Count == 0 as MyTrack(V2)::hitPattern2 is empty, this is totally normal and it has been done for clarity.
+             
             std::cout << 'O' << 'B' << 'J' << ' ' << newObj << ' ';
             std::cout << 'C' << 'O' << 'U' << 'N' << 'T' << ' ' << (uint)newObj->getCount() << std::endl;
         ]]>
@@ -68,11 +68,6 @@
                 newObj->setHitPattern(hit);
             }
 
-            /*
-              from here you can see that the rule is called multiple times for the same object
-              so the same hits are inserted again and hence increasing the number of hits stored in MyTrack(V3)::hitPattern.
-              One for each accesses, for instance click multiple times on the count member using TBrowser to trigger this.
-            */
 
             std::cout << 'O' << 'B' << 'J' << ' ' << newObj << ' ';
             std::cout << 'C' << 'O' << 'U' << 'N' << 'T' << ' ' << (uint)newObj->getHitCount() << std::endl;
