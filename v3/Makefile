@@ -3,6 +3,7 @@ all:
 	g++ classes_rflx.cpp -o libMock.so `root-config --cflags --libs --ldflags` -lReflex -lCintex -shared -fPIC -g3
 
 clean:
+	rm -rf AutoDict*
 	rm -rf *.d
 	rm -rf *.so
 	rm -rf *rflx.cpp

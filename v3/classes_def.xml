@@ -1,7 +1,7 @@
 <lcgdict>
     <class name="MyHitPattern" ClassVersion="3">
-     <version ClassVersion="3" checksum="3377649464"/>
-     <version ClassVersion="2" checksum="2539181362"/>
+     <version ClassVersion="3" checksum="2793252633"/>
+     <version ClassVersion="2" checksum="4133304075"/>
     </class>
     <class name="MyTrack" ClassVersion="3">
      <version ClassVersion="3" checksum="517813649"/>
@@ -13,15 +13,28 @@
     
    <ioread
         sourceClass="MyHitPattern"
-        source="uint16_t hitPattern[25]"
+        source="uint16_t array[25]"
         targetClass="MyHitPattern"
-        target="hitPattern"
+        target="array"
         version="[-2]"
-
-        include="iostream"
-        >
+        include="iostream">
         <![CDATA[
-            std::cout << 'H' << std::endl;            
+
+            std::cout << 'R' << 'U' << 'L' << 'E' << ' ' << 'H' << 'I' << 'T' << 'P' << 'A' << 'T' << ' ';
+        
+            for (uint i = 0; i < MyHitPattern::MAX_HITS; i++){
+                uint hit = onfile.array[i];
+                if (!hit){
+                    break;
+                }
+                newObj->setHit(hit);
+            }
+            
+            // from here you will see some prints with:
+            //  * Count == 5 as MyTrack(V2)::hitPattern1 stores 5 hits.
+            //  * Count == 0 as MyTrack(V2)::hitPattern2 is empty, this is totally normal and it has been done for clarity.
+            std::cout << 'O' << 'B' << 'J' << ' ' << newObj << ' ';
+            std::cout << 'C' << 'O' << 'U' << 'N' << 'T' << ' ' << (uint)newObj->getCount() << std::endl;
         ]]>
     </ioread>
     
@@ -31,10 +44,38 @@
         targetClass="MyTrack"
         target="hitPattern"
         version="[-2]"
-        include="iostream"
-        >
+        include="iostream">
         <![CDATA[
-            std::cout << 'T' << std::endl;
+   
+            std::cout << 'R' << 'U' << 'L' << 'E' << ' ' << 'T' << 'R' << 'A' << 'C' << 'K' << 'S' << ' ';
+        
+            //save the first
+            for (uint i = 0; i < MyHitPattern::MAX_HITS; i++){
+                uint hit = onfile.hitPattern1.getHit(i);
+                if (!hit){
+                    break;
+                }
+                newObj->setHitPattern(hit);
+            }
+
+            // save the second.
+            // Not really neeeded for the example, as stated before, MyTrack(V2)::hitPattern2 is empty.
+            for (uint i = 0; i < MyHitPattern::MAX_HITS; i++){
+                uint hit = onfile.hitPattern2.getHit(i);
+                if (!hit){
+                    break;
+                }
+                newObj->setHitPattern(hit);
+            }
+
+            /*
+              from here you can see that the rule is called multiple times for the same object
+              so the same hits are inserted again and hence increasing the number of hits stored in MyTrack(V3)::hitPattern.
+              One for each accesses, for instance click multiple times on the count member using TBrowser to trigger this.
+            */
+
+            std::cout << 'O' << 'B' << 'J' << ' ' << newObj << ' ';
+            std::cout << 'C' << 'O' << 'U' << 'N' << 'T' << ' ' << (uint)newObj->getHitCount() << std::endl;
         ]]>
     </ioread>
 </lcgdict>

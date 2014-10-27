@@ -6,34 +6,38 @@
 class MyHitPattern
 {
 public:
-    static const size_t MAX_HITS = 25;
+    static const size_t MAX_HITS = 200;
 
     MyHitPattern()
     {
-        memset(hitPattern, sizeof(uint16_t) * MAX_HITS, 0);
+        memset(array, sizeof(uint16_t) * MAX_HITS, 0);
         count = 0;
     };
 
     void setHit(uint16_t data)
     {
-        if (count == MyHitPattern::MAX_HITS) {
+        if (count >= MyHitPattern::MAX_HITS) {
             return;
         }
-        hitPattern[count] = data;
+        array[count] = data;
         count++;
     }
 
-    uint16_t getHit(size_t index)
+    uint16_t getHit(size_t index) const
     {
         if (index >= MyHitPattern::MAX_HITS) {
             return 0;
         }
 
-        return hitPattern[index];
+        return array[index];
     }
 
+    uint8_t getCount() const
+    {
+        return count;
+    }
 
 private:
-    uint16_t hitPattern[MAX_HITS];
+    uint16_t array[MAX_HITS];
     uint8_t count;
 };
