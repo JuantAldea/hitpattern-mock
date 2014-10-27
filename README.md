@@ -28,15 +28,15 @@ Can be triggered by clicking multiple times on the members using a TBrowser.
 **There are printouts in both rules and from them you will get:**
 
 * split_level_0 members:
- * MyHitPattern rule:
-  * Count == 5 as MyTrack(V2)::hitPattern1 stores 5 hits.
-  * Count == 0 as MyTrack(V2)::hitPattern2 is empty, this is totally normal and it has been done for clarity.
-  * So the rule is being call just one time for each object, you can see as well that the pointers does not match betweeen runs.
- * MyTrack rule:
-  * Count increases every time you click on one member, because the same object is being reused. Pointers are the same.
+    * MyHitPattern rule:
+        * Count == 5 as MyTrack(V2)::hitPattern1 stores 5 hits.
+        * Count == 0 as MyTrack(V2)::hitPattern2 is empty, this is totally normal and it has been done for clarity.
+        * So the rule is being call just one time for each object, you can see as well that the pointers does not match betweeen runs.
+    * MyTrack rule:
+        * Count increases every time you click on one member, because the same object is being reused. Pointers are the same.
 * split_level_1 members:
- * MyHitPattern rule:
-  * Count increases: In this case you will see that the object is being reused, Pointers are the same.
- * MyTrack:
-  * Count increases as well.
+    * MyHitPattern rule:
+        * Count increases: In this case you will see that the object is being reused, Pointers are the same.
+    * MyTrack:
+        * Count increases as well.
 
