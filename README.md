@@ -36,9 +36,12 @@ Can be triggered by clicking multiple times on the members using a TBrowser.
         * So the rule is being call just one time for each object, you can see as well that the pointers does not match betweeen runs.
     * MyTrack rule:
         * Count increases every time you click on one member, because the same object is being reused. Pointers are the same.
+    * After clicking the first time, you can see that the rules have been executed twice and hence 10 hits have been inserted into each track.
 * split_level_1 members:
     * MyHitPattern rule:
         * Count increases: In this case you will see that the object is being reused, Pointers are the same.
     * MyTrack:
         * Count increases as well.
+
+Indeed this can be easily solved in my case by resetting the object every time the rule is called.
 
