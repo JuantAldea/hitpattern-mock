@@ -16,7 +16,7 @@ The schema evolution consist of:
 
 After creating a file using v2/foo.cc and reading it with v3 you would see that:
 
-- The split_level_0 collection is correctly transformed: Only array and count will be present.
+- The split_level_0 collection is correctly transformed: Array and count will be present.
 - The split_level_1 collection is partially converted, there are still two MyHitPattern objects but the count data member is present.
 - The split_level_2 an default are not converted at all.
 
