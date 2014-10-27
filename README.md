@@ -44,4 +44,5 @@ Can be triggered by clicking multiple times on the members using a TBrowser.
         * Count increases as well.
 
 Indeed this can be easily solved in my case by resetting the object every time the rule is called.
+
 Tested with 5.34/18 (heads/v5-34-00-patches@v5-34-17-156-g60f5d99, Oct 14 2014, 17:53:00 on linuxx8664gcc)
